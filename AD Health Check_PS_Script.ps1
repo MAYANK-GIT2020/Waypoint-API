@@ -1,4 +1,4 @@
-﻿#*****************AD HealthCheck and replication summary result****created by Mayank Tripathi(25/12/2021)
+﻿#*****************AD HealthCheck and replication summary result****created by Mayank Tripathi(25/12/2021)***************
 repadmin /replsum | Out-File -FilePath C:\Users\Administrator\Documents\healthcheckscript\replication-summary.txt
 Out-File -FilePath C:\Users\Administrator\Documents\healthcheckscript\replication-summary.txt -Append -InputObject "---------------------C DRIVE STATUS---------------------" -Width 100
 $allinfo = @()
