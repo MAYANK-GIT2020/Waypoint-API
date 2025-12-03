@@ -10,7 +10,8 @@ public class Waypoint {
 
     private final UUID uuid;
     private final String name;
-    private final Location location;
+
+    private Location location;
 
     private Color color;
 
@@ -35,6 +36,10 @@ public class Waypoint {
 
         this.color = color;
         this.style = style;
+    }
+
+    public void location(final Location location) {
+        this.location = location;
     }
 
     public void color(final Color color) {
