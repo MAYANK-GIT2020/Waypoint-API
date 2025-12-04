@@ -1,5 +1,6 @@
 package io.github.fajzu;
 
+import io.papermc.paper.math.Position;
 import org.bukkit.Color;
 import org.bukkit.Location;
 
@@ -7,7 +8,7 @@ import java.util.UUID;
 
 public record Waypoint(UUID uuid,
                        String name,
-                       Location location,
+                       Position position,
                        Color color,
                        WaypointStyle style) {
 

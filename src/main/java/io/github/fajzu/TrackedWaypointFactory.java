@@ -19,9 +19,9 @@ public class TrackedWaypointFactory {
 
         final WaypointInfo info = new Vec3iWaypointInfo(
                 new Vector3i(
-                        waypoint.location().getBlockX(),
-                        waypoint.location().getBlockY(),
-                        waypoint.location().getBlockZ()
+                        waypoint.position().blockX(),
+                        waypoint.position().blockY(),
+                        waypoint.position().blockZ()
                 )
         );
 

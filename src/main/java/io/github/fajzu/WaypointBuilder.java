@@ -1,5 +1,6 @@
 package io.github.fajzu;
 
+import io.papermc.paper.math.Position;
 import org.bukkit.Color;
 import org.bukkit.Location;
 
@@ -10,7 +11,7 @@ public class WaypointBuilder {
     private UUID uuid = UUID.randomUUID();
     private String name = "";
 
-    private Location location;
+    private Position position;
     private Color color = Color.WHITE;
 
     private WaypointStyle style = WaypointStyle.DEFAULT;
@@ -21,7 +22,7 @@ public class WaypointBuilder {
     private WaypointBuilder(final Waypoint waypoint) {
         this.uuid = waypoint.uuid();
         this.name = waypoint.name();
-        this.location = waypoint.location();
+        this.position = waypoint.position();
         this.color = waypoint.color();
         this.style = waypoint.style();
     }
@@ -49,8 +50,8 @@ public class WaypointBuilder {
         return this;
     }
 
-    public WaypointBuilder location(Location location) {
-        this.location = location;
+    public WaypointBuilder position(Position position) {
+        this.position = position;
         return this;
     }
 
@@ -63,7 +64,7 @@ public class WaypointBuilder {
         return new Waypoint(
                 this.uuid,
                 this.name,
-                this.location,
+                this.position,
                 this.color,
                 this.style
         );
