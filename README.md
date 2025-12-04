@@ -77,17 +77,17 @@ waypointProvider.track(player, waypoint);
 ```java
 Waypoint waypoint = ...
 
- waypoint
-         .toBuilder()
-         .color(Color.BLUE)
-         .style(WaypointStyle.of("custom", "path"))
-         .position(new Location(
+waypoint
+        .toBuilder()
+        .color(Color.BLUE)
+        .style(WaypointStyle.of("custom", "path"))
+        .position(new Location(
                 null,
                 10,
                 200,
                 10
-         ))
-         .build();
+        ))
+        .build();
 
 waypointProvider.update(player, waypoint);
 ```
