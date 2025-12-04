@@ -6,21 +6,16 @@
 
 ## 🌟 Features
 
-- ➕ Create, update, and remove waypoints
-- 🎨 Custom names, icons, colors, and styling
-- ⚡ Lightweight and fast integration
-- 📚 Fully documented API structure
-
----
-
+- Create, update, and remove waypoints
+- Custom names, icons, colors, and styling
+- Lightweight and fast integration
+- Fully documented API structure
 
 ## 🧰 Requirements
 
-- 🗺️ Server version 1.21.5+
-- 📦 [PacketEvents](https://github.com/retrooper/packetevents)
-- ☕ [Java](https://www.java.com/en/) 21+
-
----
+- Server version 1.21.5+
+- [PacketEvents](https://github.com/retrooper/packetevents)
+- [Java](https://www.java.com/en/) 21+
 
 ## 📦 Installation
 
@@ -52,24 +47,24 @@ Add the repository and dependency to your project:
 #### Injecting a WaypointAPI into Plugin
 
 ```java
-final WaypointProvider waypointProvider = WaypointProvider.init(this);
+WaypointProvider waypointProvider = WaypointProvider.init(this);
 ```
 
 #### Creating a Waypoint
 
 ```java
-final Waypoint waypoint = WaypointBuilder
-        .builder()
-        .name("Test")
-        .location(new Location(
-                "world",
-                0,
-                100,
-                0
-        ))
-        .style(WaypointStyle.DEFAULT)
-        .color(Color.BLACK)
-        .build();
+Waypoint waypoint = WaypointBuilder
+      .builder()
+      .name("Test")
+      .location(new Location(
+            "world",
+            0,
+            100,
+            0
+      ))
+      .style(WaypointStyle.DEFAULT)
+      .color(Color.BLACK)
+      .build();
 
 waypointProvider.sendWaypoint(player, waypoint);
 ```
@@ -77,7 +72,7 @@ waypointProvider.sendWaypoint(player, waypoint);
 #### Updating a Waypoint
 
 ```java
-final Waypoint waypoint = waypointProvider.find(player.getUniqueId(), "UUID");
+Waypoint waypoint = waypointProvider.find(player.getUniqueId(), "UUID");
 
 waypoint.color(Color.BLUE);
 waypoint.style(WaypointStyle.of("custom", "path"));
@@ -94,7 +89,7 @@ waypointProvider.update(player, waypoint);
 #### Removing a Waypoint
 
 ```java
-final Waypoint waypoint = waypointProvider.find(player.getUniqueId(), "UUID");
+Waypoint waypoint = waypointProvider.find(player.getUniqueId(), "UUID");
 
 waypointProvider.removeWaypoint(player, waypoint);
 ```
@@ -109,9 +104,7 @@ Spotted an issue? Report it via Discord: **fizuxd** 💬
 
 ## 🗂️ TODO
 
-- 🔔 Add Bukkit Events handling for creating/updating/removing waypoint
-
----
+- Add Bukkit Events handling for creating/updating/removing waypoint
 
 ## ❤️ Thanks for Your Support!
 
