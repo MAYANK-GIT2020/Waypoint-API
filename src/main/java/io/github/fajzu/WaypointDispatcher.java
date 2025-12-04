@@ -20,27 +20,27 @@ public class WaypointDispatcher {
 
     public void send(final Player player,
                      final Waypoint waypoint,
-                     final WrapperPlayServerWaypoint.Operation operation) {
+                     final WaypointOperation operation) {
         final TrackedWaypoint trackedWaypoint = trackedWaypointFactory.create(waypoint);
 
-        final WrapperPlayServerWaypoint packet = new WrapperPlayServerWaypoint(operation, trackedWaypoint);
+        final WrapperPlayServerWaypoint packet = new WrapperPlayServerWaypoint(operation.operation(), trackedWaypoint);
 
         this.playerManager.sendPacket(player, packet);
     }
 
     public void track(final Player player,
                       final Waypoint waypoint) {
-        this.send(player, waypoint, WrapperPlayServerWaypoint.Operation.TRACK);
+        this.send(player, waypoint, WaypointOperation.TRACK);
     }
 
     public void hide(final Player player,
                      final Waypoint waypoint) {
-        this.send(player, waypoint, WrapperPlayServerWaypoint.Operation.UNTRACK);
+        this.send(player, waypoint, WaypointOperation.HIDE);
     }
 
     public void update(final Player player,
                        final Waypoint waypoint) {
-        this.send(player, waypoint, WrapperPlayServerWaypoint.Operation.UPDATE);
+        this.send(player, waypoint, WaypointOperation.UPDATE);
     }
 
 }

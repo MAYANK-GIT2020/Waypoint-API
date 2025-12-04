@@ -18,8 +18,20 @@ public class WaypointBuilder {
     private WaypointBuilder() {
     }
 
+    private WaypointBuilder(final Waypoint waypoint) {
+        this.uuid = waypoint.uuid();
+        this.name = waypoint.name();
+        this.location = waypoint.location();
+        this.color = waypoint.color();
+        this.style = waypoint.style();
+    }
+
     public static WaypointBuilder builder() {
         return new WaypointBuilder();
+    }
+
+    public static WaypointBuilder builder(final Waypoint waypoint) {
+        return new WaypointBuilder(waypoint);
     }
 
     public WaypointBuilder uuid(UUID uuid) {

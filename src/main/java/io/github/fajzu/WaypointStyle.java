@@ -15,6 +15,14 @@ public record WaypointStyle(String namespace, String path) {
         return new WaypointStyle(namespace, path);
     }
 
+    public static ResourceLocation resolve(final Waypoint waypoint) {
+        if (waypoint.style() != null) {
+            return waypoint.style().resourceLocation();
+        }
+
+        return WaypointStyle.DEFAULT.resourceLocation();
+    }
+
     public ResourceLocation resourceLocation() {
         return new ResourceLocation(
                 this.namespace,

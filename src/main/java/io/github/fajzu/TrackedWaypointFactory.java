@@ -9,15 +9,10 @@ import com.github.retrooper.packetevents.util.Either;
 import com.github.retrooper.packetevents.util.Vector3i;
 
 public class TrackedWaypointFactory {
-    private final WaypointStyleResolver styleResolver;
-
-    public TrackedWaypointFactory(final WaypointStyleResolver styleResolver) {
-        this.styleResolver = styleResolver;
-    }
 
     public TrackedWaypoint create(final Waypoint waypoint) {
         final WaypointIcon icon = new WaypointIcon(
-                styleResolver.resolve(waypoint),
+                WaypointStyle.resolve(waypoint),
 
                 new Color(waypoint.color().getRed(), waypoint.color().getGreen(), waypoint.color().getBlue())
         );
