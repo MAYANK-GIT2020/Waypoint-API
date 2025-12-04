@@ -25,9 +25,9 @@ public class WaypointProvider {
         final Stopwatch stopWatch = Stopwatch.createStarted();
 
         if (!plugin.getServer().getPluginManager().isPluginEnabled("packetevents")) {
-            PacketEvents.setAPI(SpigotPacketEventsBuilder.build(plugin));
+            WaypointConstants.DEPENDENCY_NOT_FOUND.forEach(string -> LOGGER.log(Level.SEVERE, string));
 
-            PacketEvents.getAPI().load();
+            plugin.getServer().shutdown();
             return;
         }
 
@@ -41,7 +41,6 @@ public class WaypointProvider {
         PacketEvents.getAPI().init();
 
         this.trackedWaypointFactory = new TrackedWaypointFactory();
-
         this.waypointDispatcher = new WaypointDispatcher(this.trackedWaypointFactory);
 
         LOGGER.log(Level.FINE, "Successfully Injected WaypointProvider in " + stopWatch.elapsed(TimeUnit.MILLISECONDS));
