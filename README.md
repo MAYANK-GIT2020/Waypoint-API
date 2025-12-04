@@ -11,9 +11,13 @@
 - Lightweight and fast integration
 - Fully documented API structure
 
+---
+
+- Preview Video: [Link](https://www.youtube.com/watch?v=FkM1QbLYQs0)
+
 ## 🧰 Requirements
 
-- Server version 1.21.5+
+- Server version 1.21.6+
 - [PacketEvents](https://github.com/retrooper/packetevents)
 - [Java](https://www.java.com/en/) 21+
 
