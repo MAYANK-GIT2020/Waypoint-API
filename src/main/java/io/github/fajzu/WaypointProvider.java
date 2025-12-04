@@ -50,7 +50,7 @@ public class WaypointProvider {
             return;
         }
 
-        plugin.getLogger().log(Level.INFO, "Successfully Injected WaypointProvider in " + stopWatch.elapsed(TimeUnit.MILLISECONDS));
+        LOGGER.log(Level.FINE, "Successfully Injected WaypointProvider in " + stopWatch.elapsed(TimeUnit.MILLISECONDS));
     }
 
     public static WaypointProvider init(final @NotNull Plugin plugin) {
