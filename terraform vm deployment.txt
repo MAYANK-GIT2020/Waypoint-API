@@ -1,0 +1,102 @@
+﻿location     = "southeast asia" #PROD Deployment Azure Region
+avd_location = "japan east"     #PROD AVD Metadata Deployment Azure Region
+prod_tags = {
+  Buildby     = "syed.aman@gxs.com.sg"
+  BuildDate   = "20-03-2023"
+  Environment = "Prod"
+
+ 
+
+}
+
+ 
+
+**********************************************************
+      Azure Virtual Network and NSGs variables
+*********************************************************/
+
+ 
+
+prod_rg_name                 = "GXS-AVD-SG"                                        #PROD Resource Group Name 
+prod_vnet_name               = "GS-VNET-AVD-SG"                                    #PROD Virtual Network Name 
+prod_vnet_cidr               = ["10.23.64.0/22"]                                   #PROD Virtual Network Address Space 
+prod_dns_servers             = ["10.103.0.4", "10.23.60.4", "10.23.60.5"]                                      #PROD Virtual Network DNS Server 
+prod_subnet_names            = ["GS-AVD-SN1-SG", "GS-AVD-SN2-SG", "GS-AVD-SN3-SG"] #PROD Virtual Network Subnet Names 
+prod_subnet_prefixes         = ["10.23.64.0/24", "10.23.65.0/24", "10.23.66.0/24"] #PROD Virtual Network Subnet Address Space 
+prod_GS-AVD-SN1_nsg_name     = "GS-AVD-SN1-NSG"                                    #PROD Subnet 1 Network Security Group Name 
+prod_GS-AVD-SN1_custom_rules = []
+prod_GS-AVD-SN2_nsg_name     = "GS-AVD-SN2-NSG" #PROD Subnet 2 Network Security Group Name 
+prod_GS-AVD-SN2_custom_rules = []
+prod_GS-AVD-SN3_nsg_name     = "GS-AVD-SN3-NSG" #PROD Subnet 3 Network Security Group Name
+prod_GS-AVD-SN3_custom_rules = []
+
+ 
+
+ 
+
+/*****************************************************
+       Azure Keyvault and AVD Host Module
+*****************************************************/
+
+ 
+
+keyvault_name                         = "PROD-AVD-KV-01" #PROD Azure Keyvault Name
+avd_register_session_host_modules_url = "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration_02-23-2022.zip"
+
+ 
+
+/********************************************************
+     Azure Virtual Desktop (Personal Desktop Medium Pool)
+*********************************************************/
+
+ 
+
+prod_avd_med_personal_hostpool_name     = "PROD-AVD-MED-PER-HP"  #PROD Personal Medium Host Pool Name
+prod_avd_med_personal_host_pool_vm_size = "Standard_D2ds_v5"     #PROD Personal Medium Host Pool VM Size
+prod_avd_med_personal_workspace_name    = "PROD-AVD-MED-PER-WS"  #PROD Personal Medium Workspace Name
+prod_avd_med_personal_dag_name          = "PROD-AVD-MED-PER-DAG" #PROD Personal Medium Application Group Name
+prod_avd_med_personal_hostpool_image_id = "/subscriptions/1fa00c10-81ee-48e7-b152-5096655dd4d1/resourceGroups/GXS-DEV-AVD-SG/providers/Microsoft.Compute/galleries/AVD_Dev_Imagegallery/images/DEV-AVD-GI/versions/0.0.3"
+prod_avd_med_personal_prefix            = "PRD-MED-SH"             #PROD Personal Medium Session Host Name Prefix
+prod_avd_med_personal_host_pool_size    = "167"                   #PROD Personal Medium Host Pool Size
+prod_avd_med_personal_aad_group         = "vdi-prod-per-med-users" #PROD Personal Medium Azure AD Group
+
+ 
+
+/**************************************************************
+     Azure Virtual Desktop (Personal Desktop Professional Pool)
+***************************************************************/
+
+ 
+
+prod_avd_pro_personal_hostpool_name     = "PROD-AVD-PRO-PER-HP"  #PROD Personal Professional Host Pool Name
+prod_avd_pro_personal_host_pool_vm_size = "Standard_D4ds_v5"     #PROD Personal Professional Host Pool VM Size
+prod_avd_pro_personal_workspace_name    = "PROD-AVD-PRO-PER-WS"  #PROD Personal Professional Workspace Name
+prod_avd_pro_personal_dag_name          = "PROD-AVD-PRO-PER-DAG" #PROD Personal Professional Application Group Name
+prod_avd_pro_personal_hostpool_image_id = "/subscriptions/1fa00c10-81ee-48e7-b152-5096655dd4d1/resourceGroups/GXS-DEV-AVD-SG/providers/Microsoft.Compute/galleries/AVD_Dev_Imagegallery/images/DEV-AVD-GI/versions/0.0.3"
+prod_avd_pro_personal_prefix            = "PRD-PRO-SH"             #PROD Personal Professional Session Host Name Prefix
+prod_avd_pro_personal_host_pool_size    = "6"                      #PROD Personal Professional Host Pool Size
+prod_avd_pro_personal_aad_group         = "vdi-prod-per-pro-users" #PROD Personal Professional Azure AD Group
+
+ 
+
+/**************************************************************
+     Azure Virtual Desktop (Personal Desktop Engineering Pool)
+***************************************************************/
+prod_avd_engg_personal_hostpool_name     = "PROD-AVD-ENGR-PER-HP"  #PROD Personal Engineering Host Pool Name
+prod_avd_engg_personal_host_pool_vm_size = "Standard_D4ds_v5"      #PROD Personal Engineering Host Pool VM Size
+prod_avd_engg_personal_workspace_name    = "PROD-AVD-ENGR-PER-WS"  #PROD Personal Engineering Workspace Name
+prod_avd_engg_personal_dag_name          = "PROD-AVD-ENGR-PER-DAG" #PROD Personal Engineering Application Group Name
+prod_avd_engg_personal_hostpool_image_id = "/subscriptions/1fa00c10-81ee-48e7-b152-5096655dd4d1/resourceGroups/GXS-DEV-AVD-SG/providers/Microsoft.Compute/galleries/AVD_Dev_Imagegallery/images/DEV-AVD-ENGR-GI/versions/0.0.1"
+prod_avd_engg_personal_prefix            = "PRD-ENGR-SH"            #PROD Personal Engineering Session Host Name Prefix
+prod_avd_engg_personal_host_pool_size    = "65"                      #PROD Personal Engineering Host Pool Size
+prod_avd_engg_personal_aad_group         = "vdi-prod-per-eng-users" #PROD Personal Engineering Azure AD Group
+
+
+
+/**************************************************************
+      Azure Log Analytics Workspace and Diagnostics Logs
+**************************************************************/
+prod_loganalytics_workspace          = "PROD-AVD-LGW"
+prod_avd_log_hp_diag_category        = ["Management", "Checkpoint", "Error", "Connection", "HostRegistration", "AgentHealthStatus", "ConnectionGraphicsData", "NetworkData", "SessionHostManagement"]
+prod_avd_log_workspace_diag_category = ["Management", "Checkpoint", "Error", "Feed"]
+prod_avd_log_dag_diag_category       = ["Management", "Checkpoint", "Error"]

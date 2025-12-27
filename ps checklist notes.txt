@@ -1,0 +1,53 @@
+#to check ps version
+
+$PSVersionTable
+#or
+Get-Host | Select-Object Version
+
+
+#After PowerShell is running, you must change the execution policy to allow the running of remote scripts.
+
+Set-ExecutionPolicy RemoteSigned -Force
+
+#Verify remote signed or not
+
+Get-ExecutionPolicy
+
+
+#verify that the WinRM service is running and has been configured correctly
+
+Get-Service winrm
+
+
+#start the WinRM service
+
+Start-Service winrm
+
+
+#to make sure that WinRM is using Basic authentication:
+
+winrm set winrm/config/client/auth '@{Basic="True"}'
+
+
+#In order to configure WinRM to use HTTPS, open up a PowerShell console as administrator on both machines and run:
+
+winrm quickconfig -transport:https
+
+
+#open port 5986 on the firewall:
+
+netsh firewall add portopening TCP 5986 "WinRM over HTTPS" 
+
+================================================================================
+1. PowerShell console as administrator on both machines and run:
+winrm quickconfig -transport:https
+
+2.now open port 5986 on the firewall:
+netsh firewall add portopening TCP 5986 "WinRM over HTTPS"
+
+OR
+Alternatively, you can add the remote machine as trusted host on the client by running:
+winrm set winrm/config/client @{TrustedHosts="10.0.5.35"}
+
+
+

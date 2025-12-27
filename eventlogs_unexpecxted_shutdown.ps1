@@ -1,0 +1,2 @@
+﻿Get-EventLog System | Where-Object {$_.EventID -eq "1074" -or $_.EventID -eq "6008" -or $_.EventID -eq "1076"} | ft Machinename, TimeWritten, UserName, EventID, Message -AutoSize -Wrap
+Get-EventLog System | Where-Object {$_.EventID -eq "1074" -or $_.EventID -eq "6008" -or $_.EventID -eq "1076"} | Select-Object -Property Machinename, TimeWritten, UserName, EventID, Message | Export-Csv "C:\temp\shutdown_events_$(Get-Date -f MMddyyyy_hhmmss).csv" -NoTypeInformation

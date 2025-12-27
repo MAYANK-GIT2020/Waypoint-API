@@ -1,0 +1,11 @@
+check the existing port group of vm
+check the existing datastore of vm.
+Now power off the virtual machine.
+select vm and go to action and unregister the vm.
+now goto datastore and select vmx file and download it.
+backup the original vmx file. 
+by using notepad++ editor change the portgroup.
+upload the vmx file.
+now right click and register the vmx file.
+check and confirm the vm in virtual machine tab and in network port also.
+Power on the machine.

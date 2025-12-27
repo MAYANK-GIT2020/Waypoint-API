@@ -1,0 +1,25 @@
+$url = "webhook url here"
+$header = @{ Message = "StartedByAccenture-AADIRenameDwpIO" }
+$body = @(
+            @{ SerialNumber = "PF003VXS" }
+           
+            @{ TaskNumber = "Task0012" }
+            
+           
+)
+
+$bodyJSON =  ConvertTo-Json -InputObject $body
+
+$bodyJSON
+# Trigger webhook
+try {
+    Write-Host "Triggring webhook..." -ForegroundColor Yellow
+    $response = Invoke-RestMethod -Method Post -Uri $url -Body $bodyJSON -Headers $header
+    $response
+    Write-Host "Webhook was successfully triggerd..." -ForegroundColor Green
+}
+catch {
+    Write-Host "Failed to trigger webhook..." -ForegroundColor Green
+}
+
+                $version = "2017-04-17"

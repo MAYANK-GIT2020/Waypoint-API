@@ -1,0 +1,4 @@
+wuauclt /detectnow
+wuauclt /reportnow
+​wuauclt /resetauthorization
+http://192.168.22.34:8530
